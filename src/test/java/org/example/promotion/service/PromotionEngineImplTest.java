@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PromotionEngineImplTest {
 
     MultiPackPromoCode ax3Promo = new MultiPackPromoCode(new Product('A', 50), 3, 130);
     MultiPackPromoCode bx2Promo = new MultiPackPromoCode(new Product('B', 30), 2, 45);
     PromotionEngineImpl promotionEngine = new PromotionEngineImpl(
-                List.of(
-                        ax3Promo,
-                        bx2Promo
-                ));
+            List.of(
+                    ax3Promo,
+                    bx2Promo
+            ));
 
 
     @Test

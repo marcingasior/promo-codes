@@ -5,10 +5,17 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProductFactoryTest {
 
+
+    private static ProductFactory aFactory() {
+        Map<Character, Integer> mapping = new HashMap<>();
+        mapping.put('A', 50);
+        return new ProductFactory(mapping);
+    }
 
     @Test
     void shouldReturnInstance() {
@@ -22,11 +29,5 @@ class ProductFactoryTest {
     void shouldReturnEmptyOption() {
         var productOpt = aFactory().getInstance('B');
         assertTrue(productOpt.isEmpty());
-    }
-
-    private static ProductFactory aFactory() {
-        Map<Character, Integer> mapping = new HashMap<>();
-        mapping.put('A', 50);
-        return new ProductFactory(mapping);
     }
 }

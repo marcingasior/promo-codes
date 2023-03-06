@@ -2,13 +2,12 @@ package org.example.product;
 
 public record Product(Character name, Integer price) {
 
-    public Product(Character name, Integer price){
+    public Product {
         if (name == null || price == null || price < 0) throw new IllegalArgumentException();
 
-        this.price = price;
-        this.name = name;
     }
-    public static Product of(Character name, Integer price){
+
+    public static Product of(Character name, Integer price) {
         return new Product(name, price);
     }
 }

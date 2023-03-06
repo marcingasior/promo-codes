@@ -7,15 +7,16 @@ import org.example.promotion.service.PromotionEngine;
 
 import java.util.Optional;
 
-public class CheckoutServiceImpl implements CheckoutService{
+public class CheckoutServiceImpl implements CheckoutService {
 
-    private ProductFactory productFactory;
-    private PromotionEngine promotionEngine;
+    private final ProductFactory productFactory;
+    private final PromotionEngine promotionEngine;
 
-    public CheckoutServiceImpl(ProductFactory productFactory, PromotionEngine promotionEngine){
+    public CheckoutServiceImpl(ProductFactory productFactory, PromotionEngine promotionEngine) {
         this.productFactory = productFactory;
         this.promotionEngine = promotionEngine;
     }
+
     @Override
     public Integer calculateTotal(Cart cart) {
         Integer total = cart.products()
@@ -23,7 +24,7 @@ public class CheckoutServiceImpl implements CheckoutService{
                 .map(productFactory::getInstance)
                 .flatMap(Optional::stream)
                 .map(Product::price)
-                .reduce((a,b) -> a+b).orElse(0);
+                .reduce(Integer::sum).orElse(0);
 
         Integer discount = promotionEngine.getDiscount(cart);
 

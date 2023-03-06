@@ -5,6 +5,7 @@ import org.example.product.Product;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,7 +13,7 @@ class ItemSetPromoCodeTest {
 
 
     ItemSetPromoCode promoCode = new ItemSetPromoCode(
-            List.of(
+            Set.of(
                     Product.of('C', 20),
                     Product.of('D', 15)
             ), 30);
@@ -36,6 +37,6 @@ class ItemSetPromoCodeTest {
     void isNotApplicable() {
         Cart cart = new Cart(List.of('C', 'B'));
         var result = promoCode.isApplicable(cart);
-        assertTrue(result);
+        assertFalse(result);
     }
 }

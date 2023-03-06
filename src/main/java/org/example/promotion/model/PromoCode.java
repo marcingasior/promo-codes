@@ -14,7 +14,7 @@ public interface PromoCode {
 
     boolean isApplicable(Cart cart);
 
-    default Map<Character, Long> groupProductsInCart(Cart cart){
+    default Map<Character, Long> groupProductsInCart(Cart cart) {
         return cart.products().stream().collect(groupingBy(Function.identity(), counting()));
     }
 }
